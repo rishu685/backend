@@ -146,6 +146,8 @@ This repository includes a Render blueprint at [render.yaml](render.yaml).
 5. After deployment, your live URL will look like:
   - https://your-service-name.onrender.com
 
+Note: Render Free does not support persistent disks. This blueprint is configured for Free tier using ephemeral SQLite storage at ./data/finance.db.
+
 ### Option B: Manual Web Service Deploy
 
 1. New + > Web Service > Connect repository.
@@ -154,8 +156,9 @@ This repository includes a Render blueprint at [render.yaml](render.yaml).
 4. Start command: npm start.
 5. Add environment variables:
   - JWT_SECRET: any strong random string
-  - DB_PATH: /var/data/finance.db
-6. Add a persistent disk mounted at /var/data (1 GB is enough for demo).
+  - DB_PATH: ./data/finance.db
+
+For paid plans, you can switch DB_PATH to a persistent mount path and attach a disk.
 
 ### Verify after deploy
 
