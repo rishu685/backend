@@ -130,6 +130,44 @@ Covers:
 - Admin create record + analyst read records
 - Viewer access to dashboard summary
 
+## Deployment (Render)
+
+This repository includes a Render blueprint at [render.yaml](render.yaml).
+
+### Option A: One-click Blueprint Deploy
+
+1. Push this repository to GitHub.
+2. In Render, select New + > Blueprint.
+3. Choose this repository and deploy.
+4. Render will use:
+  - build command: npm install && npm run build
+  - start command: npm start
+  - health endpoint: /health
+5. After deployment, your live URL will look like:
+  - https://your-service-name.onrender.com
+
+### Option B: Manual Web Service Deploy
+
+1. New + > Web Service > Connect repository.
+2. Runtime: Node.
+3. Build command: npm install && npm run build.
+4. Start command: npm start.
+5. Add environment variables:
+  - JWT_SECRET: any strong random string
+  - DB_PATH: /var/data/finance.db
+6. Add a persistent disk mounted at /var/data (1 GB is enough for demo).
+
+### Verify after deploy
+
+1. Open [https://your-service-name.onrender.com/health](https://your-service-name.onrender.com/health)
+2. Expect: {"status":"ok"}
+
+### Submission fields (example)
+
+- GitHub Repository URL: https://github.com/rishu685/backend
+- Live Demo URL: https://your-service-name.onrender.com
+- API Documentation URL (optional): Postman public docs link
+
 ## Assumptions and Tradeoffs
 
 - Authentication is email/password with JWT and no refresh token flow
