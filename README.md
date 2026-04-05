@@ -1,4 +1,4 @@
-# Finance Data Processing and Access Control Backend
+# Finance Data Processing and Access Control Backend.
 
 A backend assignment solution demonstrating:
 
